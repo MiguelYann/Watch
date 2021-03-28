@@ -66,7 +66,10 @@
         </tr>
 
         <tr th:each="watch : ${watches}">
-            <td th:text="${watch.name}"></td>
+            <td th:text="${watch.title}"></td>
+            <td th:text="${watch.rating}"></td>
+            <td th:text="${watch.priority}"></td>
+            <td th:text="${watch.comment}"></td>
         </tr>
         </tbody>
     </table>

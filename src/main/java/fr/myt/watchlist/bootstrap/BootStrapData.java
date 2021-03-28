@@ -1,11 +1,9 @@
 package fr.myt.watchlist.bootstrap;
 
-import fr.myt.watchlist.models.Watch;
+import fr.myt.watchlist.models.WatchItem;
 import fr.myt.watchlist.repositories.WatchRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class BootStrapData implements CommandLineRunner {
@@ -19,26 +17,30 @@ public class BootStrapData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        List<Watch> watches = List.of(
-                Watch.builder()
-                        .id(1)
-                        .name("Apple Watch")
-                        .date("20/10/2020")
-                        .build(),
+        WatchItem firstWatch = WatchItem.builder()
+                .title("Apple Watch")
+                .priority("1")
+                .comment("Good")
+                .rating("3")
+                .build();
+        WatchItem secondWatch = WatchItem.builder()
+                .title("Samsung Watch")
+                .priority("3")
+                .comment("Not to bad")
+                .rating("4")
+                .build();
 
-                Watch.builder()
-                        .id(2)
-                        .name("Samsung Watch")
-                        .date("20/10/2021")
-                        .build(),
+        WatchItem thirdWatch = WatchItem.builder()
+                .title("Nokia Watch")
+                .priority("5")
+                .comment("Bad")
+                .rating("1")
+                .build();
 
-                Watch.builder()
-                        .id(3)
-                        .name("Nokie Watch")
-                        .date("20/10/2023")
-                        .build()
-        );
 
-        watchRepository.save(watches);
+        watchRepository.save(firstWatch);
+        watchRepository.save(secondWatch);
+        watchRepository.save(thirdWatch);
+
     }
 }
